@@ -7,8 +7,10 @@ from aluno.aluno import Aluno
 # PARTE 1 — Encontre os bugs
 # Escreva um teste para cada bug descrito no guia da atividade.
 # =============================================================
+def test_calcular_media_com_tres_notas():
+    aluno = Aluno(nome="Carlos", notas=[6.0, 6.0, 6.0], faltas=0)
+    assert aluno.calcular_media() == 6.0
 
-#
 
 # =============================================================
 # PARTE 2 — Implemente com TDD
