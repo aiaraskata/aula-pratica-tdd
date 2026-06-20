@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import MagicMock
 from aluno.aluno import Aluno
-
+from aluno.aluno import Aluno, contar_aprovados
 
 # =============================================================
 # PARTE 1 — Encontre os bugs
@@ -29,7 +29,15 @@ def test_calcular_media_arredondada_corretamente():
 
 # Requisito 1 — contar_aprovados(lista_de_alunos) -> int
 # Escreva os testes ANTES de implementar a função
-
+def test_contar_aprovados_cenarios():
+    aluno1 = Aluno("Aires", [7, 8, 6, 9]) 
+    aluno2 = Aluno("Bruna", [8, 9, 8, 10])
+    aluno3 = Aluno("Carlos", [4, 5, 3, 4])
+    
+    assert contar_aprovados([aluno1, aluno2]) == 2
+    assert contar_aprovados([aluno3]) == 0
+    assert contar_aprovados([aluno1, aluno2, aluno3]) == 2
+    assert contar_aprovados([]) == 0
 
 # Requisito 2 — situacao_final(total_aulas) -> str
 # Escreva os testes ANTES de implementar o método
