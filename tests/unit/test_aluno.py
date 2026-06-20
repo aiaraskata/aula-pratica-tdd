@@ -47,13 +47,10 @@ def test_situacao_final_considerando_faltas():
 # Requisito 3 — enviar_boletim(email_service)
 # Use MagicMock para simular o serviço de e-mail
 # Escreva os testes ANTES de implementar o método
-def test_envio_boletim_por_email():
-    servico_email_mock = Mock() 
-    
-    aluno_reprovado = Aluno("João", [4, 4, 5, 4], faltas=2) 
-    aluno_reprovado.enviar_boletim(servico_email_mock)
-    servico_email_mock.enviar.assert_called_once_with("João", 4.25)
+def test_envio_boletim_por_email(aluno_aprovado, aluno_reprovado):
+    servico_email_mock = Mock()
+    aluno_reprovado.enviar_boletim(servico_email_mock, total_aulas=40)
+    servico_email_mock.enviar.assert_called_once_with("João", 4.0)
     servico_email_mock.reset_mock()
-    aluno_aprovado = Aluno("Maria", [8, 9, 8, 9], faltas=2)
-    aluno_aprovado.enviar_boletim(servico_email_mock)
+    aluno_aprovado.enviar_boletim(servico_email_mock, total_aulas=40)
     servico_email_mock.enviar.assert_not_called()
