@@ -30,5 +30,9 @@ class Aluno:
             return "Aprovado"
         return "Reprovado por nota"
     
+    def enviar_boletim(self, servico_email) -> None:
+        if self.situacao() == "Reprovado":
+            servico_email.enviar(self.nome, self.calcular_media())
+    
 def contar_aprovados(alunos: list) -> int:
     return sum(1 for aluno in alunos if aluno.situacao() == "Aprovado")
