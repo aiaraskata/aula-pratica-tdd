@@ -2,6 +2,7 @@ import pytest
 from unittest.mock import MagicMock
 from aluno.aluno import Aluno
 from aluno.aluno import Aluno, contar_aprovados
+from unittest.mock import Mock
 
 # =============================================================
 # PARTE 1 — Encontre os bugs
@@ -46,3 +47,13 @@ def test_situacao_final_considerando_faltas():
 # Requisito 3 — enviar_boletim(email_service)
 # Use MagicMock para simular o serviço de e-mail
 # Escreva os testes ANTES de implementar o método
+def test_envio_boletim_por_email():
+    servico_email_mock = Mock() 
+    
+    aluno_reprovado = Aluno("João", [4, 4, 5, 4], faltas=2) 
+    aluno_reprovado.enviar_boletim(servico_email_mock)
+    servico_email_mock.enviar.assert_called_once_with("João", 4.25)
+    servico_email_mock.reset_mock()
+    aluno_aprovado = Aluno("Maria", [8, 9, 8, 9], faltas=2)
+    aluno_aprovado.enviar_boletim(servico_email_mock)
+    servico_email_mock.enviar.assert_not_called()
