@@ -11,6 +11,9 @@ def test_calcular_media_com_tres_notas():
     aluno = Aluno(nome="Carlos", notas=[6.0, 6.0, 6.0], faltas=0)
     assert aluno.calcular_media() == 6.0
 
+def test_situacao_media_exata_seis(aluno_reprovado):
+    aluno = Aluno(nome="Pedro", notas=[6.0, 6.0, 6.0, 6.0], faltas=0)
+    assert aluno.situacao() == "Aprovado"
 
 # =============================================================
 # PARTE 2 — Implemente com TDD
