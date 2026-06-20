@@ -15,6 +15,9 @@ def test_situacao_media_exata_seis(aluno_reprovado):
     aluno = Aluno(nome="Pedro", notas=[6.0, 6.0, 6.0, 6.0], faltas=0)
     assert aluno.situacao() == "Aprovado"
 
+def test_menor_nota(aluno_aprovado):
+    assert aluno_aprovado.menor_nota() == 7
+
 # =============================================================
 # PARTE 2 — Implemente com TDD
 # Siga o ciclo: 🔴 escreva o teste → 🟢 implemente → 🟡 refatore
