@@ -18,6 +18,10 @@ def test_situacao_media_exata_seis(aluno_reprovado):
 def test_menor_nota(aluno_aprovado):
     assert aluno_aprovado.menor_nota() == 7
 
+def test_calcular_media_arredondada_corretamente():
+    aluno = Aluno(nome="Lucas", notas=[5.0, 6.0, 6.0, 6.0], faltas=0) 
+    assert aluno.calcular_media_arredondada() == 6
+
 # =============================================================
 # PARTE 2 — Implemente com TDD
 # Siga o ciclo: 🔴 escreva o teste → 🟢 implemente → 🟡 refatore
