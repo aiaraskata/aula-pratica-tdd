@@ -37,7 +37,18 @@ def test_contar_aprovados_cenarios(aluno_aprovado, aluno_reprovado):
 
 # Requisito 2 — situacao_final(total_aulas) -> str
 # Escreva os testes ANTES de implementar o método
-
+def test_situacao_final_considerando_faltas():
+    aluno_faltoso = Aluno("Rui", [9, 9, 8, 9], faltas=11)
+    assert aluno_faltoso.situacao_final(total_aulas=40) == "Reprovado por falta"
+    
+    aluno_ok = Aluno("Ana", [7, 8, 7, 8], faltas=2)
+    assert aluno_ok.situacao_final(total_aulas=40) == "Aprovado"
+    
+    aluno_baixo = Aluno("Beto", [4, 5, 4, 5], faltas=2)
+    assert aluno_baixo.situacao_final(total_aulas=40) == "Reprovado por nota"
+    
+    aluno_limite = Aluno("Cris", [8, 8, 8, 8], faltas=10)
+    assert aluno_limite.situacao_final(total_aulas=40) == "Aprovado"
 
 # Requisito 3 — enviar_boletim(email_service)
 # Use MagicMock para simular o serviço de e-mail
